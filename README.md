@@ -1,37 +1,3 @@
-The above file contains 113 rows and 108 columns. These are the converged systems in the inference sample. 
-
-The attributes are : 
-                'source_id1', 'source_id2', 
-                'ra_mcmc', 'ra_err_plus', 'ra_err_minus', 'ra_gaia', 'ra_gaia_err', 
-                'dec_mcmc', 'dec_err_plus', 'dec_err_minus', 'dec_gaia', 'dec_gaia_err', 
-                'plx_mcmc', 'plx_err_plus', 'plx_err_minus', 'plx_gaia', 'plx_gaia_err', 
-                'pmra_mcmc', 'pmra_err_plus', 'pmra_err_minus', 'pmra_gaia', 'pmra_gaia_err', 
-                'pmdec_mcmc', 'pmdec_err_plus', 'pmdec_err_minus', 'pmdec_gaia', 'pmdec_gaia_err', 
-                'P_days_mcmc', 'P_days_err_plus', 'P_days_err_minus', 'P_days_gaia', 'P_days_gaia_err', 
-                'e_mcmc', 'e_err_plus', 'e_err_minus', 'e_gaia', 'e_gaia_err', 
-                'T0_mcmc', 'T0_err_plus', 'T0_err_minus', 'T0_gaia', 'T0_gaia_err', 
-                'gamma_kms_mcmc', 'gamma_kms_err_plus', 'gamma_kms_err_minus', 'gamma_kms_gaia', 'gamma_kms_gaia_err', 
-                'i_deg_mcmc', 'i_deg_err_plus', 'i_deg_err_minus', 
-                'Omega_deg_mcmc', 'Omega_deg_err_plus', 'Omega_deg_err_minus', 
-                'omega_deg_mcmc', 'omega_deg_err_plus', 'omega_deg_err_minus', 
-                'M1_mcmc', 'M1_err_plus', 'M1_err_minus', 'M1_cat', 'M1_cat_err_plus', 'M1_cat_err_minus',
-                'M2_mcmc', 'M2_err_plus', 'M2_err_minus',
-                'a0_mas_mcmc', 'a0_mas_err_plus', 'a0_mas_err_minus', 
-                'a1_AU_mcmc', 'a1_AU_err_plus', 'a1_AU_err_minus', 
-                'K1_kms_mcmc', 'K1_kms_err_plus', 'K1_kms_err_minus', 
-                'q_M2overM1_mcmc', 'q_M2overM1_err_plus', 'q_M2overM1_err_minus', 
-                'A_mas_gaia', 'A_mas_gaia_err', 
-                'B_mas_gaia', 'B_mas_gaia_err', 
-                'F_mas_gaia', 'F_mas_gaia_err', 
-                'G_mas_gaia', 'G_mas_gaia_err', 
-                'C_AU_gaia', 'C_AU_gaia_err', 
-                'H_AU_gaia', 'H_AU_gaia_err', 
-                'mcmc_total_steps', 'mcmc_gamma0', 'mcmc_acceptance_fraction', 'mcmc_tau_max', 'mcmc_chain_over_tau', 
-                'convergence_status',
-                'phot_g_mean_flux1', 'phot_g_mean_mag1', 'bp_rp1', 
-                'phot_g_mean_flux2', 'phot_g_mean_mag2', 'bp_rp2',
-                'ra2', 'dec2', 'pmra2', 'pmdec2', 'parallax2', 'pairdistance', 'sep_AU'
-
 # Converged binary systems : Inference Sample
 
 This table holds the **113 converged systems** from the MCMC orbit-fitting
@@ -46,7 +12,8 @@ with the corresponding Gaia catalog values for comparison.
 | Suffix | Meaning |
 |---|---|
 | `_mcmc` | Posterior median (or best-fit) value from this work's MCMC orbit fit |
-| `_err_plus` / `_err_minus` | Asymmetric 1-sigma upper / lower uncertainty on the preceding `_mcmc` (or `_cat`) value, i.e. the 84th/16th-percentile offsets from the median |
+| `_err_plus` / `_err_minus` | Asymmetric 1-sigma upper / lower uncertainty on the preceding `_mcmc` value, i.e. the 84th/16th-percentile offsets from the median |
+| _cat_err_plus / _cat_err_minus | Offsets of the catalogue upper/lower confidence bounds from the catalogue value |
 | `_gaia` | The corresponding value as published in the Gaia catalog, for comparison with the `_mcmc` fit |
 | `_gaia_err` | Symmetric 1-sigma uncertainty on the `_gaia` value |
 | `1` / `2` (no underscore) | Refers to component 1 (the star with the orbital solution, `source_id1`) or component 2 (the wide companion, `source_id2`) |
@@ -81,8 +48,7 @@ five astrometric parameters, each with its uncertainty.
 ## 3. Orbital elements
 
 Fitted (`_mcmc`) vs. Gaia-catalog (`_gaia`) orbital elements of the
-AstroSpectroSB1 solution. `i_deg`, `Omega_deg`, `omega_deg` are
-fitted only (As, Gaia-catalog don't provide there values).
+AstroSpectroSB1 solution. `i_deg`, `Omega_deg`, and `omega_deg` are fitted only: Gaia does not publish these angles directly for AstroSpectroSB1 solutions, they are encoded implicitly in the Thiele-Innes constants
 
 | Column | Units | Description |
 |---|---|---|
@@ -91,7 +57,7 @@ fitted only (As, Gaia-catalog don't provide there values).
 | `e_mcmc`, `e_err_plus`, `e_err_minus` | — | Orbital eccentricity, MCMC fit |
 | `e_gaia`, `e_gaia_err` | — | Orbital eccentricity, Gaia catalog |
 | `T0_mcmc`, `T0_err_plus`, `T0_err_minus` |days | Epoch of periastron passage, MCMC fit |
-| `T0_gaia`, `T0_gaia_err` | days | Epoch of periastron passage, Gaia catalog |
+| `T0_gaia`, `T0_gaia_err` | days | Epoch of periastron passage, Gaia catalog, it is given in days relative to the DR3 reference epoch J2016.0 (JD 2457389.0 TCB) |
 | `gamma_kms_mcmc`, `gamma_kms_err_plus`, `gamma_kms_err_minus` | km/s | Systemic (center-of-mass) radial velocity, MCMC fit |
 | `gamma_kms_gaia`, `gamma_kms_gaia_err` | km/s | Systemic radial velocity, Gaia catalog |
 | `i_deg_mcmc`, `i_deg_err_plus`, `i_deg_err_minus` | deg | Orbital inclination, MCMC fit |
@@ -132,10 +98,10 @@ Convergence & quality diagnostics for the MCMC run itself, not physical paramete
 | Column | Description |
 |---|---|
 | `mcmc_total_steps` | Total number of steps run per walker in the chain |
-| `mcmc_gamma0` | **[confirm]** — initial/seed value used for the systemic velocity $\gamma$ before fitting? |
+| `mcmc_gamma0` | Final tuned value of the differential-evolution step-scale parameter $\gamma_0$ of the `emcee` `DEMove` sampler |
 | `mcmc_acceptance_fraction` | Mean acceptance fraction of the sampler across walkers (diagnostic for step-size tuning; typically healthy in the range ~0.2–0.5) |
 | `mcmc_tau_max` | Largest integrated autocorrelation time among all fitted parameters, in steps |
-| `mcmc_chain_over_tau` | Ratio of the chain length to `mcmc_tau_max`, used as the convergence criterion (e.g. requiring this to exceed ~50) |
+| `mcmc_chain_over_tau` | Ratio of the chain length to `mcmc_tau_max`, used as the convergence criterion (requiring this to exceed 50) |
 | `convergence_status` | A boolean flag indicating whether the system satisfied the convergence criterion or not; only converged systems are present in above file. |
 
 ## 7. Photometry
@@ -157,14 +123,21 @@ Gaia astrometry for the wide companion (`source_id2`), these values come from th
 
 | Column | Units | Description |
 |---|---|---|
-| `ra2` | deg | Right ascension of component 2 from Gaia |
-| `dec2` | deg | Declination of component 2 from Gaia |
-| `pmra2` | mas/yr | Proper motion in RA of component 2 from Gaia |
-| `pmdec2` | mas/yr | Proper motion in Dec of component 2 from Gaia |
-| `parallax2` | mas | Parallax of component 2 from Gaia |
+| `ra2` | deg | Right ascension of component 2 |
+| `dec2` | deg | Declination of component 2 |
+| `pmra2` | mas/yr | Proper motion in RA of component 2 |
+| `pmdec2` | mas/yr | Proper motion in Dec of component 2 |
+| `parallax2` | mas | Parallax of component 2 |
 | `pairdistance` | deg | On-sky angular separation between component 1 and component 2 |
 | `sep_AU` | AU | Projected physical separation between the two components, computed from `pairdistance` and the parallax of component 1 |
 
 ---
+
+## References
+
+- Gaia DR3 `nss_two_body_orbit` table (orbital solutions, Thiele-Innes constants):
+  <https://gaia.aip.de/metadata/gaiadr3/nss_two_body_orbit/>
+- Gaia DR3 `gaia_source` table (astrometry, photometry):
+  <https://gaia.aip.de/metadata/gaiadr3/gaia_source/>
 
 
