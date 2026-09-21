@@ -103,33 +103,31 @@ fitted only (As, Gaia-catalog don't provide there values).
 | Column | Units | Description |
 |---|---|---|
 | `M1_mcmc`, `M1_err_plus`, `M1_err_minus` | $M_\odot$ | Mass of the primary, from the dynamical MCMC fit |
-| `M1_cat`, `M1_cat_err_plus`, `M1_cat_err_minus` | $M_\odot$ | Mass of the primary from an external catalog/prior (e.g. isochrone or spectroscopic mass) **[confirm source catalog]**, used for comparison with `M1_mcmc` |
+| `M1_cat`, `M1_cat_err_plus`, `M1_cat_err_minus` | $M_\odot$ | Mass of the primary from the Gaia DR3 $\texttt{astrophysical-parameters}$ table |
 | `M2_mcmc`, `M2_err_plus`, `M2_err_minus` | $M_\odot$ | Mass of the (unseen/secondary) companion, derived from the MCMC orbit fit |
 | `a0_mas_mcmc`, `a0_mas_err_plus`, `a0_mas_err_minus` | mas | Photocenter semi-major axis of the astrometric orbit |
 | `a1_AU_mcmc`, `a1_AU_err_plus`, `a1_AU_err_minus` | AU | Semi-major axis of the primary's orbit about the system's center of mass |
 | `K1_kms_mcmc`, `K1_kms_err_plus`, `K1_kms_err_minus` | km/s | Radial-velocity semi-amplitude of the primary |
 | `q_M2overM1_mcmc`, `q_M2overM1_err_plus`, `q_M2overM1_err_minus` | — | Mass ratio, $q = M_2/M_1$ |
 
-## 5. Gaia Thiele–Innes constants
+## 5. Gaia Thiele-Innes constants
 
-Thiele–Innes elements as published by Gaia for the combined
-astrometric+spectroscopic (astrometric binary + SB1) orbital solution;
+Thiele-Innes constants as published by Gaia in the $\texttt{nss-two-body-orbit}$ table for the AstroSpectroSB1 orbital solution;
 `A, B, F, G` describe the astrometric ellipse, `C, H` the spectroscopic
 (radial-velocity) part of the same solution.
 
 | Column | Units | Description |
 |---|---|---|
-| `A_mas_gaia`, `A_mas_gaia_err` | mas | Thiele–Innes constant $A$ |
-| `B_mas_gaia`, `B_mas_gaia_err` | mas | Thiele–Innes constant $B$ |
-| `F_mas_gaia`, `F_mas_gaia_err` | mas | Thiele–Innes constant $F$ |
-| `G_mas_gaia`, `G_mas_gaia_err` | mas | Thiele–Innes constant $G$ |
-| `C_AU_gaia`, `C_AU_gaia_err` | AU | Thiele–Innes constant $C$ (spectroscopic component) |
-| `H_AU_gaia`, `H_AU_gaia_err` | AU | Thiele–Innes constant $H$ (spectroscopic component) |
+| `A_mas_gaia`, `A_mas_gaia_err` | mas | Thiele-Innes constant $A$ |
+| `B_mas_gaia`, `B_mas_gaia_err` | mas | Thiele-Innes constant $B$ |
+| `F_mas_gaia`, `F_mas_gaia_err` | mas | Thiele-Innes constant $F$ |
+| `G_mas_gaia`, `G_mas_gaia_err` | mas | Thiele-Innes constant $G$ |
+| `C_AU_gaia`, `C_AU_gaia_err` | AU | Thiele-Innes constant $C$ (spectroscopic component) |
+| `H_AU_gaia`, `H_AU_gaia_err` | AU | Thiele-Innes constant $H$ (spectroscopic component) |
 
 ## 6. MCMC fit diagnostics
 
-Convergence/quality diagnostics for the MCMC run itself (e.g. an
-`emcee`-style sampler), not physical parameters of the binary.
+Convergence & quality diagnostics for the MCMC run itself, not physical parameters of the binary.
 
 | Column | Description |
 |---|---|
@@ -138,7 +136,7 @@ Convergence/quality diagnostics for the MCMC run itself (e.g. an
 | `mcmc_acceptance_fraction` | Mean acceptance fraction of the sampler across walkers (diagnostic for step-size tuning; typically healthy in the range ~0.2–0.5) |
 | `mcmc_tau_max` | Largest integrated autocorrelation time among all fitted parameters, in steps |
 | `mcmc_chain_over_tau` | Ratio of the chain length to `mcmc_tau_max`, used as the convergence criterion (e.g. requiring this to exceed ~50) |
-| `convergence_status` | **[confirm exact values/encoding, e.g. `"converged"`/`"not converged"` string vs. 0/1 flag]** — whether the chain satisfied the convergence criterion; only converged systems (this table) pass |
+| `convergence_status` | A boolean flag indicating whether the system satisfied the convergence criterion or not; only converged systems are present in above file. |
 
 ## 7. Photometry
 
@@ -146,36 +144,27 @@ Gaia photometry for each component of the pair.
 
 | Column | Units | Description |
 |---|---|---|
-| `phot_g_mean_flux1` | e-/s (Gaia internal flux units) | Mean G-band flux, component 1 |
+| `phot_g_mean_flux1` | electron/sec | Mean G-band flux, component 1 |
 | `phot_g_mean_mag1` | mag | Mean G-band magnitude, component 1 |
-| `bp_rp1` | mag | $G_{BP}-G_{RP}$ color, component 1 |
-| `phot_g_mean_flux2` | e-/s | Mean G-band flux, component 2 |
+| `bp_rp1` | mag | $BP - RP$ color, component 1 |
+| `phot_g_mean_flux2` | electron/sec | Mean G-band flux, component 2 |
 | `phot_g_mean_mag2` | mag | Mean G-band magnitude, component 2 |
-| `bp_rp2` | mag | $G_{BP}-G_{RP}$ color, component 2 |
+| `bp_rp2` | mag | $BP - RP$ color, component 2 |
 
 ## 8. Companion (component 2) astrometry, and pair separation
 
-Gaia astrometry for the wide companion (`source_id2`) — this component does
-not have its own orbital solution in this table, only its direct Gaia
-catalog values — plus the on-sky/physical separation of the pair.
+Gaia astrometry for the wide companion (`source_id2`), these values come from the Wide Binary Catalog we constructed using Gaia DR3 data.
 
 | Column | Units | Description |
 |---|---|---|
-| `ra2` | deg | Right ascension, component 2, from Gaia |
-| `dec2` | deg | Declination, component 2, from Gaia |
-| `pmra2` | mas/yr | Proper motion in RA, component 2, from Gaia |
-| `pmdec2` | mas/yr | Proper motion in Dec, component 2, from Gaia |
-| `parallax2` | mas | Parallax, component 2, from Gaia |
-| `pairdistance` | **[confirm units — arcsec/deg/mas?]** | On-sky angular separation between component 1 and component 2 |
-| `sep_AU` | AU | Projected physical separation between the two components, computed from `pairdistance` and the system parallax |
+| `ra2` | deg | Right ascension of component 2 from Gaia |
+| `dec2` | deg | Declination of component 2 from Gaia |
+| `pmra2` | mas/yr | Proper motion in RA of component 2 from Gaia |
+| `pmdec2` | mas/yr | Proper motion in Dec of component 2 from Gaia |
+| `parallax2` | mas | Parallax of component 2 from Gaia |
+| `pairdistance` | deg | On-sky angular separation between component 1 and component 2 |
+| `sep_AU` | AU | Projected physical separation between the two components, computed from `pairdistance` and the parallax of component 1 |
 
 ---
 
-### Open items to confirm before finalizing
-
-- `T0_mcmc` / `T0_gaia`: exact time system and reference (BJD_TDB? JD? Gaia reference epoch offset in days?).
-- `M1_cat`: which external catalog/method this mass comes from.
-- `mcmc_gamma0`: confirm what this stores (initial guess vs. some other quantity).
-- `convergence_status`: confirm the exact encoding of values in this column.
-- `pairdistance`: confirm units (and whether it's the quantity `sep_AU` is derived from).
 
