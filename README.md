@@ -7,7 +7,7 @@ The accompanying FITS file contains the final catalogue of 113 inferred companio
 
 # Converged binary systems : Inference Sample
 
-This FITS file holds the **113 converged systems** from the MCMC orbit-fitting
+This FITS file includes the **113 converged systems** from the MCMC orbit-fitting
 inference sample: AstroSpectroSB1 binaries for which the fit
 passed the convergence criteria (see `convergence_status` below), together
 with the corresponding Gaia catalog values for comparison.
