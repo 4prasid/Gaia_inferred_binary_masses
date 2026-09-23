@@ -2,7 +2,7 @@
 
 This repository accompanies the paper [*Companion masses of Gaia DR3 AstroSpectroSB1 binaries: a Bayesian forward-modelling framework*](https://arxiv.org/abs/2609.24321). The paper presents a Bayesian framework for inferring the masses of faint, unresolved companions by jointly modelling Gaia DR3 astrometric and spectroscopic orbital measurements using the full published covariance matrix. The method is applied to 1,035 AstroSpectroSB1 systems, including a validation sample of 760 binaries and an inference sample of 275 systems. Meaningful companion-mass estimates are obtained for 113 systems with well-converged posterior distributions.
 
-The accompanying FITS file contains the final catalogue of inferred companion masses and corresponds to the data presented in 2609.24321 [astro-ph.SR].
+The accompanying FITS file contains the final catalogue of 113 inferred companion masses and corresponds to the data presented in 2609.24321 [astro-ph.SR].
 
 
 # Converged binary systems : Inference Sample
